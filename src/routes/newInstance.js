@@ -32,10 +32,10 @@ export default async function newInstance(request, reply) {
 
     const sendNotify = await terrasa(phone, notify, trToken );
     if (!sendNotify) {
-      return reply.status(500).send({ "error": "flow send, notify error" });
+      return reply.status(206).send({ "zeev": sendFlow, "terrasa": "notify error" });
     }
 
-    return reply.status(200).send(sendFlow);
+    return reply.status(200).send({ "zeev": sendFlow, "terrasa": "notify send" });
 
   } catch (error) {
     console.error(error);
